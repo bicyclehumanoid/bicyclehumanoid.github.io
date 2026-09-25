@@ -91,29 +91,11 @@
       .video {
         position: relative;
         aspect-ratio: 16 / 9;
-        display: grid;
-        place-items: center;
-        color: #efe7db;
-        background:
-          linear-gradient(180deg, rgba(17,17,17,0.15), rgba(17,17,17,0.55)),
-          url("assets/overview.jpg") center / cover no-repeat;
       }
-      .video .play {
-        width: 74px;
-        height: 74px;
-        border-radius: 50%;
-        border: 0;
-        background: rgba(255,253,248,0.92);
-        color: var(--ink);
-        font-size: 1.4rem;
-        box-shadow: var(--shadow);
-      }
-      .video p {
-        position: absolute;
-        bottom: 18px;
-        margin: 0;
-        font-size: 0.92rem;
-        letter-spacing: 0.02em;
+      .video video {
+        width: 100%;
+        height: 100%;
+        display: block;
       }
       section { margin: 0 0 56px; }
       h2 {
@@ -262,8 +244,10 @@
     <div class="wrap">
       <section id="video" class="hero">
         <div class="video">
-          <button class="play" type="button" aria-label="Video coming soon">▶</button>
-          <p>Hardware and simulation video coming soon</p>
+          <video controls poster="assets/overview.jpeg">
+            <source src="assets/demo.mp4" type="video/mp4">
+            죄송합니다. 브라우저가 영상 재생을 지원하지 않습니다.
+          </video>
         </div>
       </section>
 
@@ -279,7 +263,7 @@
       <section>
         <h2>Overview</h2>
         <figure class="figure">
-          <img src="assets/overview.jpg" alt="BicycleMan three-stage pipeline: data preparation, progressive policy learning, and zero-shot deployment.">
+          <img src="assets/overview.jpeg" alt="BicycleMan three-stage pipeline: data preparation, progressive policy learning, and zero-shot deployment.">
           <figcaption>
             Stage 1 reconstructs measured bicycle geometry and retargets rider motion with a contact-locked polish.
             Stage 2 trains a privileged teacher with a wheel-width curriculum, then distills a deployable student.
@@ -312,7 +296,7 @@
       <section>
         <h2>Physics-based bicycle</h2>
         <figure class="figure">
-          <img src="assets/drivetrain.jpg" alt="Unilateral tendon model of the bicycle freehub.">
+          <img src="assets/drivetrain.jpeg" alt="Unilateral tendon model of the bicycle freehub.">
           <figcaption>
             The bicycle is fully dynamic in MuJoCo. Wheels have no kinematic rolling constraint.
             A unilateral pawl-and-tendon freehub transmits torque only under forward pedaling, so coasting and backward cranking stay slack.
@@ -375,7 +359,7 @@
           Simulation metrics are seed-level means from the paper. Tracking the bicycle trajectory is not enough: OmniRetarget keeps saddle contact and velocity but barely pedals or holds the bars.
         </p>
         <figure class="figure">
-          <img src="assets/baseline.jpg" alt="Qualitative comparison of ResMimic, OmniRetarget, and BicycleMan riding behavior.">
+          <img src="assets/baseline.jpeg" alt="Qualitative comparison of ResMimic, OmniRetarget, and BicycleMan riding behavior.">
           <figcaption>
             ResMimic* loses the handlebar and falls. OmniRetarget scoots the bicycle with the ground instead of pedaling.
             BicycleMan keeps the foot on the pedal and produces sustained forward riding.
@@ -401,4 +385,3 @@
     </div>
   </body>
 </html>
-
